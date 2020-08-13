@@ -18,7 +18,6 @@ const Pagination: React.FC<PaginationProps> = ({
     style={{ margin: '50px 0' }}
     current={currentPage}
     onChange={(currentPage) => handlePagenation(currentPage)}
-    simple
     total={totalPages}
   />
 );

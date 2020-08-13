@@ -4,7 +4,7 @@ import FiltersBar from '../../components/filters-bar';
 import Pagination from '../../components/pagination';
 import { timeoutPromise, errorMessageModal } from '../../helpers/';
 import { Workout } from '../../types';
-import { Result } from 'antd';
+import { Result, Spin } from 'antd';
 import './style.css';
 
 /* Home Page where it control/show the workout list */
@@ -20,11 +20,16 @@ const Home: React.FC = () => {
   const [dateFilter, setDateFilter] = useState<string>('');
   //State for category filters to send to API later and also trigger on change to reterive the new data
   const [categoryFilter, setCategoryFilter] = useState<string>('');
-  //if something goes wrong it will show Result component that shows error to the user / instead of checking workout.length because it has bounce issue
+  //If something goes wrong it will show Result component that shows error to the user / instead of checking workout.length because it has bounce issue
   const [hasError, setHasError] = useState<boolean>(false);
+  //To control spinning visibility while loading the data
+  const [loading, setLoading] = useState<boolean>(false);
+  //To control Pagination visibility while docs under 20
+  const [showPagination, setShowPagination] = useState<boolean>(false);
 
   // When ever changes happen to the filters it trigger this function in order to load data from the server
   useEffect(() => {
+    setLoading(true);
     timeoutPromise(
       fetch(getDynamicUrl(1))
         .then((response) => response.json())
@@ -32,13 +37,20 @@ const Home: React.FC = () => {
           if (!data.message.docs) {
             errorMessageModal(data.message.error);
             setHasError(true);
+            setLoading(false);
             return;
           }
+          data.message.docs.length < 20
+            ? setShowPagination(false)
+            : setShowPagination(true);
+          setLoading(false);
           setCurrentPage(1);
           setWorkouts(data.message.docs);
           setTotalPages(data.message.totalPages * 10);
         })
     ).catch((error) => {
+      setShowPagination(false);
+      setLoading(false);
       errorMessageModal(error);
       setHasError(true);
     });
@@ -67,6 +79,7 @@ const Home: React.FC = () => {
 
   const handlePagenation = (page: number) => {
     setCurrentPage(page);
+    setShowPagination(true);
     timeoutPromise(
       fetch(getDynamicUrl(page))
         .then((response) => response.json())
@@ -94,20 +107,24 @@ const Home: React.FC = () => {
 
   return (
     <div className='container'>
-      {workouts.length > 0 && (
-        <>
-          <FiltersBar
-            handleDateFilter={handleDateFilter}
-            handleCategoryFilter={handleCategoryFilter}
-          />
-          <WorkoutList data={workouts} />
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            handlePagenation={handlePagenation}
-          />
-        </>
-      )}
+      <Spin spinning={loading} size={'large'} tip='Loading...'>
+        {workouts.length > 0 && (
+          <>
+            <FiltersBar
+              handleDateFilter={handleDateFilter}
+              handleCategoryFilter={handleCategoryFilter}
+            />
+            <WorkoutList data={workouts} />
+            {showPagination && (
+              <Pagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                handlePagenation={handlePagenation}
+              />
+            )}
+          </>
+        )}
+      </Spin>
       {hasError && (
         <Result
           status='warning'

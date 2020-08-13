@@ -2,8 +2,8 @@ import React from 'react';
 import { Card } from 'antd';
 import { Workout } from '../../types';
 import { CalendarOutlined } from '@ant-design/icons';
-import './style.css';
 import { formatDateAndTime } from '../../helpers';
+import './style.css';
 
 /* workout item that shows workout card */
 

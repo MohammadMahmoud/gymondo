@@ -22,10 +22,11 @@ const FiltersBar: React.FC<FiltersBarProps> = ({
       <Menu.Item>
         Filter By Start Date :{' '}
         <Select
-          defaultValue={months[0]}
+          defaultValue={'All'}
           onChange={(value) => handleDateFilter(value as string)}
           style={{ width: 200 }}
         >
+          <Select.Option value={''}>All</Select.Option>
           {months.map((value, index) => (
             <Select.Option value={value} key={index}>
               {value}

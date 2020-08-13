@@ -43,6 +43,5 @@ export const getNextTwelveMonths = (): string[] => {
 };
 
 // central format for the date so maybe we could change it the future
-export const formatDateAndTime = (dateTime: Date): string => {
-  return moment(dateTime).format('YYYY.MM.01 hh:mm');
-};
+export const formatDateAndTime = (dateTime: Date): string =>
+  moment(dateTime).format('YYYY.MM.DD hh:mm');

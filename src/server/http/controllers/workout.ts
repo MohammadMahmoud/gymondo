@@ -20,8 +20,12 @@ export default class WorkoutsController implements IWorkoutController {
       });
     }
     if (query.startDate) {
+      const startDate = new Date(query.startDate.toString());
       filters = Object.assign(filters, {
-        startDate: { $gte: new Date(query.startDate.toString()) },
+        startDate: {
+          $gte: startDate,
+          $lte: new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0),
+        },
       });
     }
     const workouts = await WorkoutModel.paginate(filters, {

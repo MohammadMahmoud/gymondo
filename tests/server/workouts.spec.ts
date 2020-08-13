@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../bootstrap/server';
+import app from '../../src/server/bootstrap/server';
 import dotenv from 'dotenv';
 import assert from 'assert';
 

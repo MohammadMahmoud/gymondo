@@ -1,0 +1,104 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Workout REST API",
+    "description": "",
+    "version": "1.0"
+  },
+  "produces": ["application/json"],
+  "paths": {
+    "/api/workout?page=1&limit=20&category=c1,c2,c3&startDate=2020-08-12": {
+      "get": {
+        "x-swagger-router-controller": "workout",
+        "operationId": "index",
+        "tags": ["Get list of workouts"],
+        "description": "Fetch list of workouts from mongodb with pagenation and limits",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            },
+            "description": "The number of the page"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "example": 20
+            },
+            "description": "The numbers of items to return"
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "type": "string",
+              "example": "c1,c2,c3"
+            },
+            "description": "The numbers of items to return"
+          },
+          {
+            "in": "query",
+            "name": "startDate",
+            "schema": {
+              "type": "date",
+              "example": "2020-08-12"
+            },
+            "description": "The numbers of items to return"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "No workouts found"
+          },
+          "408": {
+            "description": "Request Timeout"
+          },
+          "500": {
+            "description": "Server Crash"
+          }
+        }
+      }
+    },
+    "/api/workout/{id}": {
+      "get": {
+        "x-swagger-router-controller": "workout",
+        "operationId": "index",
+        "tags": ["Get workout by ID"],
+        "description": "Get workout by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "minLength": 36,
+            "maxLength": 36,
+            "description": "The workout ID minimum length 36"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "408": {
+            "description": "Request Timeout"
+          },
+          "500": {
+            "description": "Server Crash"
+          }
+        }
+      }
+    }
+  }
+}

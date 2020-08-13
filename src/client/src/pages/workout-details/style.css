@@ -1,0 +1,27 @@
+.ant-page-header-back-button:focus,
+.ant-page-header-back-button:hover {
+  color: #ff7f66;
+}
+
+.workout-details-img {
+  width: 100%;
+  filter: brightness(90%);
+}
+
+.workout-details-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.workout-details-title,
+.workout-details-description {
+  color: white;
+  margin-bottom: 0;
+}
+
+.workout-details-title {
+  font-family: 'Pacifico', cursive !important;
+  text-align: center;
+}

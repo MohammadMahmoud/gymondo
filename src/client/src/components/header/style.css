@@ -1,0 +1,14 @@
+.nav {
+  overflow: hidden;
+  display: grid;
+  margin: 40px auto;
+}
+
+.logo {
+  padding: 10px auto;
+  text-align: center;
+}
+
+.logo svg {
+  width: 200px;
+}

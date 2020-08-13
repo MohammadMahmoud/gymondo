@@ -1,0 +1,76 @@
+@media screen and (max-width: 768px) {
+  .workout-details-title {
+    font-size: 20px;
+  }
+  .workout-details-description {
+    font-size: 12px;
+  }
+  .workout-details-category,
+  .workout-details-start-date {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .ant-card-meta-title {
+    font-size: 20px !important;
+  }
+  .card-date,
+  .ant-card-meta-description {
+    font-size: 11px !important;
+  }
+  .workout-details-title {
+    font-size: 35px;
+  }
+  .workout-details-description {
+    font-size: 20px;
+  }
+  .workout-details-category,
+  .workout-details-start-date {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ant-card-meta-title {
+    font-size: 35px !important;
+  }
+  .card-date,
+  .ant-card-meta-description {
+    font-size: 12px !important;
+  }
+  .workout-details-title {
+    font-size: 45px;
+  }
+  .workout-details-description {
+    font-size: 25px;
+  }
+  .workout-details-category,
+  .workout-details-start-date {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .container {
+    width: 2000px;
+    margin: 0 auto;
+  }
+  .ant-card-meta-title {
+    font-size: 60px !important;
+  }
+  .card-date,
+  .ant-card-meta-description {
+    font-size: 16px !important;
+  }
+  .workout-details-title {
+    font-size: 60px;
+  }
+  .workout-details-description {
+    font-size: 30px;
+  }
+  .workout-details-category,
+  .workout-details-start-date {
+    font-size: 25px;
+  }
+}

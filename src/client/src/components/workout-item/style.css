@@ -1,0 +1,36 @@
+@import url(https://fonts.googleapis.com/css2?family=Pacifico&display=swap);
+
+.ant-card {
+  border: none !important;
+}
+
+.ant-card img {
+  filter: brightness(85%);
+}
+
+.ant-card-hoverable:hover {
+  -webkit-box-shadow: 0 2px 4px -4px rgba(0, 0, 0, 0.16),
+    0 4px 7px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09) !important;
+  box-shadow: 0 2px 4px -4px rgba(0, 0, 0, 0.16),
+    0 4px 7px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09) !important;
+}
+
+.ant-card-body {
+  padding: 0 !important;
+  width: 100% !important;
+  position: absolute;
+  top: 40%;
+  width: 70%;
+}
+
+.ant-card-meta-title {
+  font-family: 'Pacifico', cursive !important;
+  color: white !important;
+  font-size: 30px !important;
+  text-transform: uppercase;
+}
+
+.ant-card-meta-description {
+  color: white !important;
+  text-shadow: 1px 1px black;
+}
